@@ -2,7 +2,7 @@ package burger_shop;
 
 import java.util.ArrayList;
 
-public class HealthBurger {
+public class HealthBurger extends Burger {
     private String name;
     private double price = 6.00;
     private Meat meat;
@@ -10,16 +10,17 @@ public class HealthBurger {
 
     public static final HealthBurger health = new HealthBurger("Health Burger", Meat.blackBean, Bread.wheat);
 
-    private ArrayList<Topping> toppings = new Arraylist<>();
+    private ArrayList<Topping> toppings = new ArrayList<Topping>();
 
     HealthBurger(String name, Meat meat, Bread bread){
+        super(name, meat, bread);
         this.name = name;
         this.meat = meat;
         this.bread = bread;
     }
 
     public void addTopping(Topping newTopping){
-        if (toppings.size() < 4) {
+        if (toppings.size() < 4 && newTopping.getHealth() == true) {
             for (int i = 0; i < toppings.size(); i++) {
                 if (toppings.get(i).getName() == newTopping.getName()) {
                     System.out.println("Topping already added");
@@ -33,12 +34,6 @@ public class HealthBurger {
         }
     }
 
-    public double totalBurgerPrice(){
-        for (int j = 0; j < toppings.size(); j++) {
-            price += toppings.get(i).getPrice();
-        }
-        return price;
-    }
     @Override
     public String toString() {
         String customerBurger = "Plain Burger:\nBun: " + this.bread + "\nMeat" + this.meat + "\nToppings: ";

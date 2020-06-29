@@ -2,16 +2,17 @@ package burger_shop;
 
 import java.util.ArrayList;
 
-public class DeluxeBurger {
+public class DeluxeBurger extends Burger {
     private String name;
     private double price = 10.00;
     private Meat meat;
     private Bread bread;
-    private ArrayList<Topping> toppings = new Arraylist<>();
+    private ArrayList<Topping> toppings = new ArrayList<Topping>();
 
     public static final DeluxeBurger deluxe = new DeluxeBurger("Deluxe Burger", Meat.steak, Bread.brioche);
 
     DeluxeBurger(String name, Meat meat, Bread bread){
+        super(name, meat, bread);
         this.name = name;
         this.meat = meat;
         this.bread = bread;
@@ -32,12 +33,6 @@ public class DeluxeBurger {
         }
     }
 
-    public double totalBurgerPrice(){
-        for (int j = 0; j < toppings.size(); j++) {
-            price += toppings.get(i).getPrice();
-        }
-        return price;
-    }
     @Override
     public String toString() {
         String customerBurger = "Plain Burger:\nBun: " + this.bread + "\nMeat" + this.meat + "\nToppings: ";

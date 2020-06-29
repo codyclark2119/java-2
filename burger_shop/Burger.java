@@ -5,7 +5,7 @@ public class Burger {
     private double price = 6.00;
     private Meat meat;
     private Bread bread;
-    private ArrayList<Topping> toppings = new Arraylist<>();
+    private ArrayList<Topping> toppings = new ArrayList<Topping>();
 
     public static final Burger value = new Burger("Value Burger", Meat.groundBeef, Bread.white);
 
@@ -32,10 +32,15 @@ public class Burger {
 
     public double totalBurgerPrice(){
         for (int j = 0; j < toppings.size(); j++) {
-            price += toppings.get(i).getPrice();
+            price += toppings.get(j).getPrice();
         }
         return price;
     }
+
+    public double plainBurgerPrice(){
+        return price;
+    }
+
     @Override
     public String toString() {
         String customerBurger = "Plain Burger:\nBun: " + this.bread + "\nMeat" + this.meat + "\nToppings: ";
