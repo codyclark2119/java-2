@@ -18,19 +18,28 @@ public class DeluxeBurger extends Burger {
         this.bread = bread;
     }
 
-    public void addTopping(Topping newTopping){
+    public boolean addTopping(Topping newTopping){
         if (toppings.size() < 6) {
-            for (int i = 0; i < toppings.size(); i++) {
-                if (toppings.get(i).getName() == newTopping.getName()) {
-                    System.out.println("Topping already added");
-                } else {
-                    toppings.add(newTopping);
+            if(toppings.size() > 0) {
+                for (int i = 0; i < toppings.size(); i++) {
+                    if (toppings.contains(newTopping)) {
+                        System.out.println("Topping already added");
+                        return false;
+                    } else {
+                        toppings.add(newTopping);
+                        return true;
+                    }
                 }
+            } else {
+                toppings.add(newTopping);
+                return true;
             }
         }
         else{
             System.out.println("Max toppings already added.");
+            return false;
         }
+        return false;
     }
 
     @Override

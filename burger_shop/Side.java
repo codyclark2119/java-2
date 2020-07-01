@@ -17,8 +17,8 @@ public class Side {
         return price;
     }
 
-    public static final Side Fries = new Side("French Fries", 1.50 );
-    public static final Side OnionRings = new Side("Onion Rings", 2.50 );
-    public static final Side FriedMushrooms = new Side("Fried Mushrooms", 2.75);
+    public static final Side fries = new Side("French Fries", 1.50 );
+    public static final Side onionRings = new Side("Onion Rings", 2.50 );
+    public static final Side friedMushrooms = new Side("Fried Mushrooms", 2.75);
 
 }

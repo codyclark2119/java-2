@@ -19,18 +19,30 @@ public class HealthBurger extends Burger {
         this.bread = bread;
     }
 
-    public void addTopping(Topping newTopping){
-        if (toppings.size() < 4 && newTopping.getHealth() == true) {
-            for (int i = 0; i < toppings.size(); i++) {
-                if (toppings.get(i).getName() == newTopping.getName()) {
-                    System.out.println("Topping already added");
+    public boolean addTopping(Topping newTopping){
+        if (toppings.size() < 4) {
+            if(newTopping.getHealth() == true){
+                if(toppings.size() > 0) {
+                    if (toppings.contains(newTopping)) {
+                        System.out.println("Topping already added");
+                        return false;
+                    } else {
+                        toppings.add(newTopping);
+                        return true;
+                    }
                 } else {
                     toppings.add(newTopping);
+                    return true;
                 }
+            } else{
+                System.out.println("Topping does not match this burger.");
+                return false;
             }
+
         }
         else{
             System.out.println("Max toppings already added.");
+            return false;
         }
     }
 

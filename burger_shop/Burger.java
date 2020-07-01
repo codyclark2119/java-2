@@ -15,19 +15,28 @@ public class Burger {
         this.bread = bread;
     }
 
-    public void addTopping(Topping newTopping){
+    public boolean addTopping(Topping newTopping){
         if (toppings.size() < 4) {
-            for (int i = 0; i < toppings.size(); i++) {
-                if (toppings.get(i).getName() == newTopping.getName()) {
-                    System.out.println("Topping already added");
-                } else {
-                    toppings.add(newTopping);
+            if(toppings.size() > 0){
+                for (int i = 0; i < toppings.size(); i++) {
+                    if (toppings.contains(newTopping)) {
+                        System.out.println("Topping already added");
+                        return false;
+                    } else {
+                        toppings.add(newTopping);
+                        return true;
+                    }
                 }
+            } else {
+                toppings.add(newTopping);
+                return true;
             }
         }
         else{
             System.out.println("Max toppings already added.");
+            return false;
         }
+        return false;
     }
 
     public double totalBurgerPrice(){
@@ -37,13 +46,13 @@ public class Burger {
         return price;
     }
 
-    public double plainBurgerPrice(){
-        return price;
+    public String getName(){
+        return name;
     }
 
     @Override
     public String toString() {
-        String customerBurger = "Plain Burger:\nBun: " + this.bread + "\nMeat" + this.meat + "\nToppings: ";
+        String customerBurger = "Plain Burger:\nBun: " + this.bread.getName() + "\nMeat: " + this.meat.getName() + "\nToppings: ";
         for (int k = 0; k < toppings.size(); k++) {
             customerBurger += toppings.get(k).getName();
             customerBurger += "\n";
